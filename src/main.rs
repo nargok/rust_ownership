@@ -1,19 +1,21 @@
 fn main() {
-    let mut s = String::from("hello world");
+    let s = String::from("hello world");
 
     let word = first_word(&s);
 
-    s.clear();
+    // s.clear();
+
+    println!("word is: {}", word);
 }
 
-fn first_word(s: &String) -> usize {
+fn first_word(s: &String) -> &str {
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() {
         if item == b' ' {
-            return i;
+            return &s[0..i];
         }
     }
 
-    s.len()
+    &s[..]
 }
